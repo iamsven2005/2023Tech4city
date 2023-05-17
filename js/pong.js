@@ -61,14 +61,17 @@ trackButton.addEventListener("click", function () {
 
 function runDetection() {
     model.detect(video).then(predictions => {
-        // console.log("Predictions: ", predictions);
+        console.log("Predictions: ", predictions);
         // get the middle x value of the bounding box and map to paddle location
         model.renderPredictions(predictions, canvas, context, video);
         if (predictions[0]) {
             let midval = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2)
+            console.log("bro ", midval)
+            let label = predictions[0].label[0]
+            console.log("bro ", label)
             gamex = document.body.clientWidth * (midval / video.width)
             updatePaddleControl(gamex)
-            console.log('Predictions: ', gamex);
+            console.log('gay ', gamex);
 
         }
         if (isVideo) {

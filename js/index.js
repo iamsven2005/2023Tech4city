@@ -69,6 +69,17 @@ function runDetection() {
     if (isVideo) {
       requestAnimationFrame(runDetection);
     }
+    if (predictions[0]) {
+        let midval = predictions[0].bbox[0] + (predictions[0].bbox[2] / 2)
+        console.log("bro ", midval)
+        let label = predictions[0].label[0]
+        console.log("lib ", label)
+        if (label == "p") {
+            
+            window.location = "https://www.youtube.com";
+
+        }
+    }
   });
 }
 
